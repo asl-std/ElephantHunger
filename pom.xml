@@ -117,30 +117,6 @@
 
 	<dependencies>
 
-		<!-- Compile Project: EffectLib -->
-		<dependency>
-			<groupId>com.elmakers.mine.bukkit</groupId>
-			<artifactId>EffectLib</artifactId>
-			<version>10.2-SNAPSHOT</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- Compile Project: BStats -->
-		<dependency>
-			<groupId>org.bstats</groupId>
-			<artifactId>bstats-bukkit</artifactId>
-			<version>3.0.2</version>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- Compile Project: ItemNBT-API -->
-		<dependency>
-			<groupId>de.tr7zw</groupId>
-			<artifactId>item-nbt-api</artifactId>
-			<version>2.11.2</version>
-			<scope>provided</scope>
-		</dependency>
-
 		<!-- SpigotAPI -->
 		<dependency>
 			<groupId>org.spigotmc</groupId>
@@ -153,6 +129,7 @@
 			<groupId>org.aslstd</groupId>
 			<artifactId>ejcore</artifactId>
 			<version>1.2.19</version>
+			<type>jar</type>
 			<scope>provided</scope>
 		</dependency>
 
