@@ -1,0 +1,197 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.aslstd</groupId>
+	<artifactId>ehunger</artifactId>
+	<version>0.0.1</version>
+	<name>eHunger</name>
+	<description>Provides functionality for hunger mechanics</description>
+
+	<properties>
+		<releaseStatus>ALPHA</releaseStatus>
+		<java.version>16</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<outputDirectory>C:\development\Plugin Test 1.18.1\plugins</outputDirectory>
+
+		<maven.compiler.source>${java.version}</maven.compiler.source>
+		<maven.compiler.target>${java.version}</maven.compiler.target>
+	</properties>
+
+	<contributors>
+
+		<contributor>
+			<name>Viktor Snoop1CattZ69</name>
+			<organization>As Second Life Team</organization>
+			<organizationUrl>https://aslstd.org/</organizationUrl>
+			<timezone>UTC+02:00</timezone>
+			<roles>
+				<role>CEO</role>
+				<role>Lead Developer</role>
+			</roles>
+		</contributor>
+
+		<contributor>
+			<name>Roman Dazed68</name>
+			<organization>As Second Life Team</organization>
+			<organizationUrl>https://aslstd.org/</organizationUrl>
+			<timezone>UTC+02:00</timezone>
+			<roles>
+				<role>Assistant Programmer</role>
+			</roles>
+		</contributor>
+
+	</contributors>
+
+	<build>
+
+		<sourceDirectory>src</sourceDirectory>
+		<finalName>${project.name}-${project.version}-${releaseStatus}</finalName>
+
+		<resources>
+			<resource>
+				<directory>resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>*.yml</include>
+				</includes>
+			</resource>
+		</resources>
+
+		<plugins>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>3.4.1</version>
+				<configuration>
+					<minimizeJar>false</minimizeJar>
+					<dependencyReducedPomLocation>
+						${project.build.directory}/dependency-reduced-pom.xml</dependencyReducedPomLocation>
+					<relocations>
+						<relocation>
+							<pattern>de.slikey</pattern>
+							<shadedPattern>org.aslstd.api.slikey</shadedPattern>
+						</relocation>
+						<relocation>
+							<pattern>de.tr7zw</pattern>
+							<shadedPattern>org.aslstd.api.tr7zw</shadedPattern>
+						</relocation>
+						<relocation>
+							<pattern>org.bstats</pattern>
+							<shadedPattern>org.aslstd.core.metrics</shadedPattern>
+						</relocation>
+					</relocations>
+					<filters>
+						<filter>
+							<artifact>*:*</artifact>
+							<excludes>
+								<exclude>META-INF/maven/**</exclude>
+								<exclude>LICENSE</exclude>
+								<exclude>migrate.php</exclude>
+							</excludes>
+						</filter>
+					</filters>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>shade</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.3.0</version>
+				<configuration>
+					<outputDirectory>${outputDirectory}</outputDirectory>
+				</configuration>
+			</plugin>
+
+		</plugins>
+
+	</build>
+
+	<dependencies>
+
+		<!-- Compile Project: EffectLib -->
+		<dependency>
+			<groupId>com.elmakers.mine.bukkit</groupId>
+			<artifactId>EffectLib</artifactId>
+			<version>10.2-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Compile Project: BStats -->
+		<dependency>
+			<groupId>org.bstats</groupId>
+			<artifactId>bstats-bukkit</artifactId>
+			<version>3.0.2</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Compile Project: ItemNBT-API -->
+		<dependency>
+			<groupId>de.tr7zw</groupId>
+			<artifactId>item-nbt-api</artifactId>
+			<version>2.11.2</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- SpigotAPI -->
+		<dependency>
+			<groupId>org.spigotmc</groupId>
+			<artifactId>spigot</artifactId>
+			<version>1.19.4-R0.1-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.aslstd</groupId>
+			<artifactId>ejcore</artifactId>
+			<version>1.2.19</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Lombok -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.26</version>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+
+	<repositories>
+
+		<!-- Paper -->
+		<repository>
+			<id>papermc</id>
+			<url>https://papermc.io/repo/repository/maven-public/</url>
+		</repository>
+
+		<!-- Central Repo -->
+		<repository>
+			<id>Maven Central</id>
+			<url>https://repo1.maven.org/maven2/</url>
+			<layout>default</layout>
+		</repository>
+
+		<!-- EffectLib Repo -->
+		<repository>
+			<id>elMakers</id>
+			<url>https://maven.elmakers.com/repository/</url>
+		</repository>
+
+		<repository>
+			<id>codemc-repo</id>
+			<url>https://repo.codemc.org/repository/maven-public/</url>
+		</repository>
+
+	</repositories>
+
+</project>

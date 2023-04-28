@@ -1,0 +1,15 @@
+name: ${project.name}
+version: ${project.version}-${releaseStatus}
+description: ''
+author: Snoop1CattZ69
+authors: [Snoop1CattZ69, Dazed68]
+website: http://aslstd.org/
+
+api-version: 1.16
+
+main: org.aslstd.eh.core.EH
+depend: [ejCore]
+softdepend: []
+
+commands:
+  eh: 
