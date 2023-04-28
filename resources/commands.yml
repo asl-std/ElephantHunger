@@ -1,0 +1,12 @@
+help:
+  command-name: help
+  description: help command description
+  permission: ehunger.command.help
+  arguments: ''
+  sender-type: ALL
+reload:
+  command-name: reload
+  description: reload command description
+  permission: ehunger.command.reload
+  arguments: ''
+  sender-type: ALL
